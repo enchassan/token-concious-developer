@@ -24,8 +24,8 @@
     <p class="text-sm sm:text-[17px] text-white/65 max-w-[580px] leading-relaxed mb-8 sm:mb-14">A practical handbook for optimizing AI agent workflows - reducing API costs, eliminating context drift, and shipping faster with tools like Cursor, Claude Code, and GitHub Copilot.</p>
     <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="inline-flex items-center gap-2 mt-4 sm:mt-6 border border-white/20 bg-white/10 text-white rounded-full py-2.5 px-4 text-[13px] font-semibold cursor-pointer backdrop-blur-md transition-all duration-200 hover:-translate-y-[1px] hover:bg-white/16">🌙 Dark mode</button>
     <div class="flex flex-col gap-6 sm:flex-row sm:gap-10 flex-wrap mt-8 sm:mt-10">
-      <div class="flex flex-col"><strong class="block font-display text-[24px] sm:text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">3</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Core Modules</span></div>
-      <div class="flex flex-col"><strong class="block font-display text-[24px] sm:text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">4</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Strategies</span></div>
+      <div class="flex flex-col"><strong class="block font-display text-[24px] sm:text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">03</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Core Modules</span></div>
+      <div class="flex flex-col"><strong class="block font-display text-[24px] sm:text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">04</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Strategies</span></div>
       <div class="flex flex-col"><strong class="block font-display text-[24px] sm:text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">60-80%</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Token Reduction</span></div>
     </div>
   </div>
@@ -261,7 +261,7 @@
             <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
             <div>
               <strong class="block text-[14px] font-bold text-ink mb-1">Refactor Global Rules</strong>
-              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Review your local <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">.cursorrules</code> or <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">CLAUDE.md</code> file. Ruthlessly purge natural language padding and compress instructions into shorthand constants.</p>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Review your local <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">.cursorrules</code> or <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">CLAUDE.md</code> file. Ruthlessly purge natural language padding and compress instructions into shorthand constants.</p>
             </div>
           </div>
 
@@ -269,7 +269,7 @@
             <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
             <div>
               <strong class="block text-[14px] font-bold text-ink mb-1">De-silo Documentation</strong>
-              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Remove role-specific standards (testing guides, API contracts) from your main system prompt. Move them into local markdown files (e.g., <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">/docs/testing.md</code>) and reference via <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">@</code> mentions only when actively editing those systems.</p>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Remove role-specific standards (testing guides, API contracts) from your main system prompt. Move them into local markdown files (e.g., <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">/docs/testing.md</code>) and reference via <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">@</code> mentions only when actively editing those systems.</p>
             </div>
           </div>
 
@@ -277,7 +277,7 @@
             <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
             <div>
               <strong class="block text-[14px] font-bold text-ink mb-1">Re-train Habits</strong>
-              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Stop typing descriptive file paths in plain English. Use native <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">@</code> file tags so the IDE feeds exact file slices deterministically. Embrace the prompt edit workflow over long conversation loops.</p>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Stop typing descriptive file paths in plain English. Use native <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">@</code> file tags so the IDE feeds exact file slices deterministically. Embrace the prompt edit workflow over long conversation loops.</p>
             </div>
           </div>
 
