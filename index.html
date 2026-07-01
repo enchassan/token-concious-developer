@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Token-Conscious Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            ink: 'var(--ink)',
+            'ink-soft': 'var(--ink-soft)',
+            'ink-muted': 'var(--ink-muted)',
+            surface: 'var(--surface)',
+            'surface-2': 'var(--surface-2)',
+            'surface-3': 'var(--surface-3)',
+            accent: 'var(--accent)',
+            'accent-2': 'var(--accent-2)',
+            'accent-light': 'var(--accent-light)',
+            green: 'var(--green)',
+            'green-light': 'var(--green-light)',
+            amber: 'var(--amber)',
+            'amber-light': 'var(--amber-light)',
+            red: 'var(--red)',
+            'red-light': 'var(--red-light)',
+            'theme-border': 'var(--border)',
+            shadow: 'var(--shadow)',
+          },
+          fontFamily: {
+            mono: 'var(--mono)',
+            sans: 'var(--sans)',
+            display: 'var(--display)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* CSS variables retained for dynamic theme switching */
+    :root {
+      --ink:        #0f1117;
+      --ink-soft:   #3a3f52;
+      --ink-muted:  #6b7280;
+      --surface:    #ffffff;
+      --surface-2:  #f5f6fa;
+      --surface-3:  #eceef5;
+      --accent:     #4f46e5;
+      --accent-2:   #7c3aed;
+      --accent-light: #ede9fe;
+      --green:      #059669;
+      --green-light:#d1fae5;
+      --amber:      #d97706;
+      --amber-light:#fef3c7;
+      --red:        #dc2626;
+      --red-light:  #fee2e2;
+      --border:     #e2e5f0;
+      --shadow:     rgba(15, 17, 23, 0.08);
+      --cover-start:#0f1117;
+      --cover-mid:  #1e1b4b;
+      --cover-end:  #312e81;
+      --mono:       'IBM Plex Mono', monospace;
+      --sans:       'Manrope', system-ui, sans-serif;
+      --display:    'Plus Jakarta Sans', sans-serif;
+    }
+
+    :root[data-theme="dark"] {
+      --ink:        #f5f7ff;
+      --ink-soft:   #c7cce2;
+      --ink-muted:  #8b93aa;
+      --surface:    #121726;
+      --surface-2:  #0d111b;
+      --surface-3:  #1b2234;
+      --accent:     #818cf8;
+      --accent-2:   #a78bfa;
+      --accent-light: rgba(129, 140, 248, 0.16);
+      --green:      #34d399;
+      --green-light: rgba(52, 211, 153, 0.16);
+      --amber:      #fbbf24;
+      --amber-light: rgba(251, 191, 36, 0.16);
+      --red:        #f87171;
+      --red-light:  rgba(248, 113, 113, 0.16);
+      --border:     #263044;
+      --shadow:     rgba(0, 0, 0, 0.35);
+      --cover-start:#060816;
+      --cover-mid:  #111c3b;
+      --cover-end:  #1f2b4e;
+    }
+  </style>
+</head>
+<body class="font-sans bg-surface-2 text-ink leading-[1.7] text-[15px] transition-colors duration-200 ease-in antialiased scroll-smooth">
+
+<!-- ── COVER ── -->
+<div class="relative overflow-hidden bg-[linear-gradient(135deg,var(--cover-start)_0%,var(--cover-mid)_50%,var(--cover-end)_100%)] text-white pt-[100px] px-12 pb-[80px] before:content-[''] before:absolute before:inset-0 before:bg-[radial-gradient(ellipse_60%_50%_at_80%_30%,rgba(99,102,241,0.35)_0%,transparent_70%),radial-gradient(ellipse_40%_60%_at_10%_80%,rgba(124,58,237,0.25)_0%,transparent_60%)] before:pointer-events-none">
+  <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none"></div>
+  <div class="relative max-w-[900px] mx-auto">
+    <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full py-[6px] px-4 text-xs font-semibold tracking-[0.08em] uppercase text-white/80 mb-9 before:content-[''] before:w-1.5 before:h-1.5 before:rounded-full before:bg-[#a5b4fc]">Developer Handbook</div>
+    <h1 class="font-display text-[clamp(36px,6vw,72px)] font-extrabold leading-[1.05] tracking-tight mb-6">The Token-Conscious<br /><span class="bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd,#f9a8d4)] bg-clip-text text-transparent">Developer</span></h1>
+    <p class="text-[17px] text-white/65 max-w-[580px] leading-relaxed mb-14">A practical handbook for optimizing AI agent workflows — reducing API costs, eliminating context drift, and shipping faster with tools like Cursor, Claude Code, and GitHub Copilot.</p>
+    <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="inline-flex items-center gap-2 mt-6 border border-white/20 bg-white/10 text-white rounded-full py-2.5 px-4 text-[13px] font-semibold cursor-pointer backdrop-blur-md transition-all duration-200 hover:-translate-y-[1px] hover:bg-white/16">🌙 Dark mode</button>
+    <div class="flex gap-10 flex-wrap mt-10">
+      <div class="flex flex-col"><strong class="block font-display text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">3</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Core Modules</span></div>
+      <div class="flex flex-col"><strong class="block font-display text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">4</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Strategies</span></div>
+      <div class="flex flex-col"><strong class="block font-display text-[28px] font-extrabold bg-[linear-gradient(90deg,#a5b4fc,#c4b5fd)] bg-clip-text text-transparent">60-80%</strong><span class="text-xs uppercase tracking-[0.08em] text-white/50">Token Reduction</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<div class="max-w-[980px] mx-auto pt-12 px-6 pb-24">
+
+  <!-- Table of Contents -->
+  <nav class="bg-surface border border-theme-border rounded-[20px] py-10 px-11 mb-14 shadow-[0_4px_24px_var(--shadow)]" id="top">
+    <p class="text-[11px] font-bold tracking-[0.1em] uppercase text-accent mb-5">Contents</p>
+    <h2 class="font-display text-[22px] font-extrabold text-ink mb-7">What's Inside</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-2.5 gap-x-10 list-none">
+      <li><a href="#module1" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">01</span> The Token Tax &amp; Payloads</a></li>
+      <li><a href="#module1b" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">02</span> The 4 Layers of a Prompt</a></li>
+      <li><a href="#s1" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">03</span> Caveman Compression</a></li>
+      <li><a href="#s2" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">04</span> The Lean Start Workflow</a></li>
+      <li><a href="#s3" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">05</span> Edit, Don't Append</a></li>
+      <li><a href="#s4" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">06</span> Right-Sizing the Thinking Budget</a></li>
+      <li><a href="#module3" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">07</span> Team Checklist &amp; Habits</a></li>
+    </ul>
+  </nav>
+
+  <!-- MODULE 1 -->
+  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-[0_4px_24px_var(--shadow)]" id="module1">
+    <div class="relative overflow-hidden pt-9 px-11 pb-8 border-b border-theme-border before:content-[''] before:absolute before:-top-5 before:-right-5 before:w-[180px] before:h-[180px] before:rounded-full before:opacity-[0.06] before:bg-[#4f46e5]">
+      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-accent">Module 01</p>
+      <h2 class="font-display text-[clamp(22px,4vw,30px)] font-extrabold tracking-tight text-ink leading-[1.15]">The Token Tax &amp; Payloads</h2>
+    </div>
+    <div class="pt-9 px-11 pb-9">
+
+      <!-- Section 1.1 -->
+      <div class="mb-12 last:mb-0">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5 bg-accent-light">⚡</div>
+          <h3 class="font-display text-[18px] font-bold text-ink leading-snug">Understanding the Accumulation Trap</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">AI models do not possess permanent active memory during a chat session. Every time you submit a new message, your IDE agent bundles the <strong class="font-bold">entire conversational history</strong> — including all code blocks previously generated — and resends it to the API server.</p>
+
+        <div class="rounded-[14px] py-5 px-6 my-5 flex gap-3.5 bg-amber-light">
+          <div class="text-[20px] shrink-0 mt-0.5">⚠️</div>
+          <div>
+            <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-amber">The Compounding Cost</strong>
+            <p class="m-0 text-[14px] leading-[1.65] text-[#92400e]">A thread does not grow linearly — it grows <em class="italic">exponentially</em>. A 10-word correction at turn 15 forces the model to re-read thousands of lines of past text, multiplying your input token consumption.</p>
+          </div>
+        </div>
+
+        <div class="rounded-[14px] py-5 px-6 my-5 flex gap-3.5 bg-accent-light">
+          <div class="text-[20px] shrink-0 mt-0.5">🧠</div>
+          <div>
+            <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-accent">Attention Dilution</strong>
+            <p class="m-0 text-[14px] leading-[1.65] text-[#3730a3]">As the payload grows, the model's internal attention mechanism stretches thin. This increase in noise causes the agent to miss requirements, introduce bugs, or hallucinate file paths.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-px bg-[linear-gradient(90deg,transparent,var(--border),transparent)] my-9"></div>
+
+      <!-- Section 1.2 -->
+      <div class="mb-12 last:mb-0" id="module1b">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5 bg-[#f3e8ff]">🗂️</div>
+          <h3 class="font-display text-[18px] font-bold text-ink leading-snug">The 4 Layers of a Prompt Payload</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">Every single prompt you submit carries four invisible layers of background data — understanding them is the first step to controlling them.</p>
+
+        <ul class="list-none my-4">
+          <li class="flex gap-3 py-2.5 border-b border-surface-3 text-ink-soft text-[14.5px] leading-relaxed last:border-0 before:content-['→'] before:text-accent before:font-bold before:shrink-0 before:mt-[1px]"><div><strong class="font-bold">Global System Instructions</strong> — Rules injected silently on every single turn (e.g., <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">.cursorrules</code>, <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">CLAUDE.md</code>).</div></li>
+          <li class="flex gap-3 py-2.5 border-b border-surface-3 text-ink-soft text-[14.5px] leading-relaxed last:border-0 before:content-['→'] before:text-accent before:font-bold before:shrink-0 before:mt-[1px]"><div><strong class="font-bold">Workspace Mapping</strong> — Automatically gathered context: open editor tabs, active text selections, and loose directory path hierarchies.</div></li>
+          <li class="flex gap-3 py-2.5 border-b border-surface-3 text-ink-soft text-[14.5px] leading-relaxed last:border-0 before:content-['→'] before:text-accent before:font-bold before:shrink-0 before:mt-[1px]"><div><strong class="font-bold">Conversation History</strong> — The compounding trail of past prompts and generated code blocks.</div></li>
+          <li class="flex gap-3 py-2.5 border-b border-surface-3 text-ink-soft text-[14.5px] leading-relaxed last:border-0 before:content-['→'] before:text-accent before:font-bold before:shrink-0 before:mt-[1px]"><div><strong class="font-bold">The Hidden Variable</strong> — Deep internal reasoning tokens generated by advanced test-time compute engines <em class="italic">before</em> code generation begins.</div></li>
+        </ul>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- MODULE 2 -->
+  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-[0_4px_24px_var(--shadow)]" id="module2">
+    <div class="relative overflow-hidden pt-9 px-11 pb-8 border-b border-theme-border before:content-[''] before:absolute before:-top-5 before:-right-5 before:w-[180px] before:h-[180px] before:rounded-full before:opacity-[0.06] before:bg-[#7c3aed]">
+      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-accent-2">Module 02</p>
+      <h2 class="font-display text-[clamp(22px,4vw,30px)] font-extrabold tracking-tight text-ink leading-[1.15]">Core Optimization Strategies</h2>
+    </div>
+    <div class="pt-9 px-11 pb-9">
+
+      <!-- Strategy 1 -->
+      <div class="mb-12 last:mb-0" id="s1">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5 bg-[#f3e8ff]">✂️</div>
+          <h3 class="font-display text-[18px] font-bold text-ink leading-snug">Strategy 1 — The "Caveman Compression" Rule File</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">Global system instruction files are processed on every message turn. Stripping conversational fluff and grammatical filler compresses your global background footprint by <strong class="font-bold">60% to 80%</strong>. Write rules as strict, imperative shorthand constants.</p>
+
+        <table class="w-full border-separate border-spacing-0 rounded-[14px] overflow-hidden border border-theme-border my-6 text-[13.5px]">
+          <thead class="bg-surface-2">
+            <tr>
+              <th class="py-3.5 px-5 text-left text-[11px] font-bold tracking-[0.08em] uppercase border-b border-theme-border text-red">❌ Bloated / Verbose — Avoid</th>
+              <th class="py-3.5 px-5 text-left text-[11px] font-bold tracking-[0.08em] uppercase border-b border-theme-border text-green">✅ Caveman Compressed — Adopt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="group/row">
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-red-light text-red font-mono text-[12.5px]">"You must always remember to use Vitest and ensure you completely mock all database layers."</td>
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-green-light text-green font-mono text-[12.5px] font-medium">Tests: Use Vitest. Mock DB layers.</td>
+            </tr>
+            <tr class="group/row">
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-red-light text-red font-mono text-[12.5px]">"Please ensure you use camelCase naming conventions for all variables."</td>
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-green-light text-green font-mono text-[12.5px] font-medium">Styles: Strict camelCase.</td>
+            </tr>
+            <tr class="group/row">
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-red-light text-red font-mono text-[12.5px]">"We highly prefer using Next.js Server Components for data fetching wherever possible."</td>
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-green-light text-green font-mono text-[12.5px] font-medium">NextJS: Default to Server Components for fetch.</td>
+            </tr>
+            <tr class="group/row">
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-red-light text-red font-mono text-[12.5px]">"When creating a new UI component, style them using Tailwind CSS classes and adhere to tailwind.config.js."</td>
+              <td class="py-4 px-5 border-b border-theme-border align-top leading-[1.6] group-last/row:border-b-0 bg-green-light text-green font-mono text-[12.5px] font-medium">UI: Tailwind CSS only. Follow tailwind.config.js values strictly.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="h-px bg-[linear-gradient(90deg,transparent,var(--border),transparent)] my-9"></div>
+
+      <!-- Strategy 2 -->
+      <div class="mb-12 last:mb-0" id="s2">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5 bg-green-light">🤝</div>
+          <h3 class="font-display text-[18px] font-bold text-ink leading-snug">Strategy 2 — Stop the "Context-Dump" (The Lean Start Workflow)</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">Dumping massive file structures and formatting instructions into your very first prompt triggers the <strong class="font-bold">"Grep Trap"</strong>, forcing the agent to blindly traverse and ingest large files. Use a two-step <strong class="font-bold">Context Handshake</strong> instead.</p>
+
+        <div class="flex flex-col gap-4 my-5">
+          <div class="flex gap-5 items-start bg-surface-2 border border-theme-border rounded-[14px] py-5 px-6">
+            <div class="w-9 h-9 rounded-[10px] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white font-display font-extrabold text-[16px] flex items-center justify-center shrink-0">1</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1.5">The Handshake — Set up context with a minimal token footprint</strong>
+              <p class="text-[13.5px] text-ink-soft m-0">Use native file tags to reference only what's needed. Example prompt: <em class="italic">"Adding a validation layer. Read <code class="font-mono text-[12px] bg-surface-3 border border-theme-border rounded-md py-0.5 px-[7px] text-accent">@layout.tsx</code> and <code class="font-mono text-[12px] bg-surface-3 border border-theme-border rounded-md py-0.5 px-[7px] text-accent">@route.ts</code>. Confirm when ready."</em></p>
+            </div>
+          </div>
+          <div class="flex gap-5 items-start bg-surface-2 border border-theme-border rounded-[14px] py-5 px-6">
+            <div class="w-9 h-9 rounded-[10px] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white font-display font-extrabold text-[16px] flex items-center justify-center shrink-0">2</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1.5">The Execution — Deliver the direct command</strong>
+              <p class="text-[13.5px] text-ink-soft m-0">Once the model acknowledges the file structure, issue your instruction. Example: <em class="italic">"Implement the route handler matching the layout structure."</em></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-l-4 border-accent py-4 px-6 bg-accent-light rounded-r-xl my-6 text-[14.5px] text-ink-soft italic leading-[1.7] [&_strong]:block [&_strong]:not-italic [&_strong]:text-[11px] [&_strong]:uppercase [&_strong]:tracking-[0.08em] [&_strong]:text-accent [&_strong]:mt-2.5">
+          Splitting setup from execution leverages modern <strong>prompt caching</strong>, which drops input processing costs by <strong>75% to 90%</strong> on subsequent turns.
+          <strong>Why This Works</strong>
+        </div>
+      </div>
+
+      <div class="h-px bg-[linear-gradient(90deg,transparent,var(--border),transparent)] my-9"></div>
+
+      <!-- Strategy 3 -->
+      <div class="mb-12 last:mb-0" id="s3">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5 bg-amber-light">✏️</div>
+          <h3 class="font-display text-[18px] font-bold text-ink leading-snug">Strategy 3 — Edit, Don't Append</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">When an agent outputs code that is nearly perfect but has a minor issue, do <strong class="font-bold">not</strong> reply with an append correction (e.g., <em class="italic">"That's good, but change line 12..."</em>).</p>
+
+        <div class="rounded-[14px] py-5 px-6 my-5 flex gap-3.5 bg-amber-light">
+          <div class="text-[20px] shrink-0 mt-0.5">🔺</div>
+          <div>
+            <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-amber">The Append Penalty</strong>
+            <p class="m-0 text-[14px] leading-[1.65] text-[#92400e]">Appending forces the model to process the old prompt, the incorrect code, your correction text, and then rewrite the entire code block — compounding token usage with every turn.</p>
+          </div>
+        </div>
+
+        <div class="rounded-[14px] py-5 px-6 my-5 flex gap-3.5 bg-green-light">
+          <div class="text-[20px] shrink-0 mt-0.5">✅</div>
+          <div>
+            <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-green">The Fix</strong>
+            <p class="m-0 text-[14px] leading-[1.65] text-[#065f46]">Scroll up, hit <strong class="inline text-[14px] uppercase-none tracking-normal font-bold text-inherit">Edit</strong> on your original prompt, refine your requirements directly inside that single node, and resubmit. This wipes dead conversational branches instantly and stops history accumulation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-px bg-[linear-gradient(90deg,transparent,var(--border),transparent)] my-9"></div>
+
+      <!-- Strategy 4 -->
+      <div class="mb-12 last:mb-0" id="s4">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center text-lg shrink-0 mt-0.5 bg-accent-light">🎚️</div>
+          <h3 class="font-display text-[18px] font-bold text-ink leading-snug">Strategy 4 — Right-Sizing the "Thinking Budget"</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">Deep internal reasoning models spend thousands of hidden tokens "thinking" before writing code. Do not pay this compute and latency tax for routine, everyday tasks.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
+          <div class="rounded-[14px] py-5 px-[22px] border bg-surface-2 border-theme-border">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.1em] rounded-full py-[3px] px-2.5 mb-3 bg-surface-3 text-ink-muted">Low / Standard Reasoning</span>
+            <h4 class="text-[13px] font-bold text-ink mb-2.5">Everyday Tasks</h4>
+            <ul class="flex flex-col gap-1.5 list-none">
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Boilerplate generation</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">UI styling updates</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Basic regex adjustments</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Routine file renames</li>
+            </ul>
+          </div>
+          <div class="rounded-[14px] py-5 px-[22px] border bg-accent-light border-accent">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.1em] rounded-full py-[3px] px-2.5 mb-3 bg-[#ede9fe] text-accent-2">High Reasoning</span>
+            <h4 class="text-[13px] font-bold text-ink mb-2.5">Complex Work Only</h4>
+            <ul class="flex flex-col gap-1.5 list-none">
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Multi-file debugging loops</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Database normalization schemas</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Deep structural refactors</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['·'] before:text-ink-muted before:text-[18px] before:leading-[1.1] before:shrink-0">Critical architectural decisions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <!-- MODULE 3 -->
+  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-[0_4px_24px_var(--shadow)]" id="module3">
+    <div class="relative overflow-hidden pt-9 px-11 pb-8 border-b border-theme-border before:content-[''] before:absolute before:-top-5 before:-right-5 before:w-[180px] before:h-[180px] before:rounded-full before:opacity-[0.06] before:bg-[#059669]">
+      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-green">Module 03</p>
+      <h2 class="font-display text-[clamp(22px,4vw,30px)] font-extrabold tracking-tight text-ink leading-[1.15]">Team Checklist &amp; Operational Habits</h2>
+    </div>
+    <div class="pt-9 px-11 pb-9">
+
+      <div class="mb-12 last:mb-0">
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">To maintain absolute token hygiene across development sprints, apply this four-part checklist to your daily environment. Click each item as you complete it.</p>
+
+        <div class="flex flex-col gap-[14px] my-5">
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">Audit Settings</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Set your default workspace chat model to a fast, cost-efficient model. Avoid leaving deep reasoning engines active for routine code adjustments.</p>
+            </div>
+          </div>
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">Refactor Global Rules</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Review your local <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">.cursorrules</code> or <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">CLAUDE.md</code> file. Ruthlessly purge natural language padding and compress instructions into shorthand constants.</p>
+            </div>
+          </div>
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">De-silo Documentation</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Remove role-specific standards (testing guides, API contracts) from your main system prompt. Move them into local markdown files (e.g., <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">/docs/testing.md</code>) and reference via <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">@</code> mentions only when actively editing those systems.</p>
+            </div>
+          </div>
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">Re-train Habits</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Stop typing descriptive file paths in plain English. Use native <code class="font-mono text-[12px] text-white bg-[#343637] py-0.5 px-1.5 rounded">@</code> file tags so the IDE feeds exact file slices deterministically. Embrace the prompt edit workflow over long conversation loops.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-ink text-white/50 text-center py-10 px-6 text-[13px]">
+  <p><strong class="text-white/80">The Token-Conscious Developer</strong> &nbsp;·&nbsp; A Handbook for AI Agent Optimization</p>
+  <p class="mt-2">Apply these strategies to reduce costs, eliminate drift, and stay in flow.</p>
+</footer>
+
+<script>
+  const root = document.documentElement;
+  const themeToggle = document.getElementById('theme-toggle');
+
+  function updateThemeToggleLabel(theme) {
+    if (!themeToggle) return;
+    themeToggle.innerHTML = theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
+  }
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    updateThemeToggleLabel(theme);
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  const preferredTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  applyTheme(savedTheme || preferredTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const nextTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(nextTheme);
+    });
+  }
+
+  function toggleCheck(el) {
+    const isChecked = el.dataset.checked === 'true';
+    if (isChecked) {
+      el.dataset.checked = 'false';
+      el.style.background = '';
+      el.style.borderColor = '';
+      el.style.color = 'transparent';
+      el.closest('.check-item').style.opacity = '1';
+    } else {
+      el.dataset.checked = 'true';
+      el.style.background = '#4f46e5';
+      el.style.borderColor = '#4f46e5';
+      el.style.color = 'white';
+      el.closest('.check-item').style.opacity = '0.6';
+    }
+  }
+</script>
+
+</body>
+</html>
