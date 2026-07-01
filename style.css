@@ -1,0 +1,49 @@
+/* CSS variables retained for dynamic theme switching */
+    :root {
+      --ink:        #0f1117;
+      --ink-soft:   #3a3f52;
+      --ink-muted:  #6b7280;
+      --surface:    #ffffff;
+      --surface-2:  #f5f6fa;
+      --surface-3:  #eceef5;
+      --accent:     #4f46e5;
+      --accent-2:   #7c3aed;
+      --accent-light: #ede9fe;
+      --green:      #059669;
+      --green-light:#d1fae5;
+      --amber:      #d97706;
+      --amber-light:#fef3c7;
+      --red:        #dc2626;
+      --red-light:  #fee2e2;
+      --border:     #e2e5f0;
+      --shadow:     rgba(15, 17, 23, 0.08);
+      --cover-start:#0f1117;
+      --cover-mid:  #1e1b4b;
+      --cover-end:  #312e81;
+      --mono:       'IBM Plex Mono', monospace;
+      --sans:       'Manrope', system-ui, sans-serif;
+      --display:    'Plus Jakarta Sans', sans-serif;
+    }
+
+    :root[data-theme="dark"] {
+      --ink:        #f5f7ff;
+      --ink-soft:   #c7cce2;
+      --ink-muted:  #8b93aa;
+      --surface:    #121726;
+      --surface-2:  #0d111b;
+      --surface-3:  #1b2234;
+      --accent:     #818cf8;
+      --accent-2:   #a78bfa;
+      --accent-light: rgba(129, 140, 248, 0.16);
+      --green:      #34d399;
+      --green-light: rgba(52, 211, 153, 0.16);
+      --amber:      #fbbf24;
+      --amber-light: rgba(251, 191, 36, 0.16);
+      --red:        #f87171;
+      --red-light:  rgba(248, 113, 113, 0.16);
+      --border:     #263044;
+      --shadow:     rgba(0, 0, 0, 0.35);
+      --cover-start:#060816;
+      --cover-mid:  #111c3b;
+      --cover-end:  #1f2b4e;
+    }
