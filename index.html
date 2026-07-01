@@ -149,7 +149,7 @@
           <div class="text-[20px] shrink-0 mt-0.5">⚠️</div>
           <div>
             <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-amber">The Compounding Cost</strong>
-            <p class="m-0 text-[14px] leading-[1.65] text-[#92400e]">A thread does not grow linearly — it grows <em class="italic">exponentially</em>. A 10-word correction at turn 15 forces the model to re-read thousands of lines of past text, multiplying your input token consumption.</p>
+            <p class="m-0 text-[14px] leading-[1.65] text-amber">A thread does not grow linearly — it grows <em class="italic">exponentially</em>. A 10-word correction at turn 15 forces the model to re-read thousands of lines of past text, multiplying your input token consumption.</p>
           </div>
         </div>
 
@@ -157,7 +157,7 @@
           <div class="text-[20px] shrink-0 mt-0.5">🧠</div>
           <div>
             <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-accent">Attention Dilution</strong>
-            <p class="m-0 text-[14px] leading-[1.65] text-[#3730a3]">As the payload grows, the model's internal attention mechanism stretches thin. This increase in noise causes the agent to miss requirements, introduce bugs, or hallucinate file paths.</p>
+            <p class="m-0 text-[14px] leading-[1.65] text-accent    ">As the payload grows, the model's internal attention mechanism stretches thin. This increase in noise causes the agent to miss requirements, introduce bugs, or hallucinate file paths.</p>
           </div>
         </div>
       </div>
@@ -255,7 +255,7 @@
         </div>
 
         <div class="border-l-4 border-accent py-4 px-6 bg-accent-light rounded-r-xl my-6 text-[14.5px] text-ink-soft italic leading-[1.7] [&_strong]:block [&_strong]:not-italic [&_strong]:text-[11px] [&_strong]:uppercase [&_strong]:tracking-[0.08em] [&_strong]:text-accent [&_strong]:mt-2.5">
-          Splitting setup from execution leverages modern <strong>prompt caching</strong>, which drops input processing costs by <strong>75% to 90%</strong> on subsequent turns.
+          Splitting setup from execution leverages modern <strong>prompt caching</strong>which drops input processing costs by <strong>75% to 90%</strong>on subsequent turns.
           <strong>Why This Works</strong>
         </div>
       </div>
@@ -274,7 +274,7 @@
           <div class="text-[20px] shrink-0 mt-0.5">🔺</div>
           <div>
             <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-amber">The Append Penalty</strong>
-            <p class="m-0 text-[14px] leading-[1.65] text-[#92400e]">Appending forces the model to process the old prompt, the incorrect code, your correction text, and then rewrite the entire code block — compounding token usage with every turn.</p>
+            <p class="m-0 text-[14px] leading-[1.65] text-amber">Appending forces the model to process the old prompt, the incorrect code, your correction text, and then rewrite the entire code block — compounding token usage with every turn.</p>
           </div>
         </div>
 
@@ -282,7 +282,7 @@
           <div class="text-[20px] shrink-0 mt-0.5">✅</div>
           <div>
             <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-green">The Fix</strong>
-            <p class="m-0 text-[14px] leading-[1.65] text-[#065f46]">Scroll up, hit <strong class="inline text-[14px] uppercase-none tracking-normal font-bold text-inherit">Edit</strong> on your original prompt, refine your requirements directly inside that single node, and resubmit. This wipes dead conversational branches instantly and stops history accumulation.</p>
+            <p class="m-0 text-[14px] leading-[1.65] text-green">Scroll up, hit <strong class="inline text-[14px] uppercase-none tracking-normal font-bold text-inherit">Edit</strong> on your original prompt, refine your requirements directly inside that single node, and resubmit. This wipes dead conversational branches instantly and stops history accumulation.</p>
           </div>
         </div>
       </div>
@@ -377,8 +377,8 @@
 
 </div>
 
-<!-- FOOTER -->
-<footer class="bg-ink text-white/50 text-center py-10 px-6 text-[13px]">
+<!-- FOOTER (Fixed dark-mode behavior by changing bg-ink to an explicit dark color hex) -->
+<footer class="bg-[#0f1117] text-white/50 text-center py-10 px-6 text-[13px]">
   <p><strong class="text-white/80">The Token-Conscious Developer</strong> &nbsp;·&nbsp; A Handbook for AI Agent Optimization</p>
   <p class="mt-2">Apply these strategies to reduce costs, eliminate drift, and stay in flow.</p>
 </footer>
