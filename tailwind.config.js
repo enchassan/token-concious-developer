@@ -25,6 +25,9 @@ tailwind.config = {
             mono: 'var(--mono)',
             sans: 'var(--sans)',
             display: 'var(--display)',
+          },
+          boxShadow: {
+            soft: '0 4px 24px var(--shadow)',
           }
         }
       }

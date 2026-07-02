@@ -45,7 +45,9 @@
       <li><a href="#s2" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">04</span> The Lean Start Workflow</a></li>
       <li><a href="#s3" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">05</span> Edit, Don't Append</a></li>
       <li><a href="#s4" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">06</span> Right-Sizing the Thinking Budget</a></li>
-      <li><a href="#module3" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">07</span> Team Checklist &amp; Habits</a></li>
+      <li><a href="#module3" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">07</span> Advanced Context Boundaries</a></li>
+      <li><a href="#module4" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">08</span> Diagnostics &amp; Troubleshooting</a></li>
+      <li><a href="#module5" class="flex items-center gap-3 text-ink-soft text-sm font-medium py-2 border-b border-theme-border transition-colors duration-200 hover:text-accent"><span class="font-mono text-[11px] text-accent bg-accent-light py-0.5 px-[7px] rounded-md font-medium shrink-0">09</span> Team Checklist &amp; Habits</a></li>
     </ul>
   </nav>
 
@@ -237,9 +239,110 @@
   </article>
 
   <!-- MODULE 3 -->
-  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-[0_4px_24px_var(--shadow)]" id="module3">
+  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-soft" id="module3">
+    <div class="relative overflow-hidden pt-7 px-4 pb-6 border-b border-theme-border sm:pt-9 sm:px-6 md:px-8 lg:px-11 lg:pb-8 before:content-[''] before:absolute before:-top-5 before:-right-5 before:w-[180px] before:h-[180px] before:rounded-full before:opacity-[0.06] before:bg-[#4f46e5]">
+      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-accent">Module 03</p>
+      <h2 class="font-display text-[clamp(22px,4vw,30px)] font-extrabold tracking-tight text-ink leading-[1.15]">Advanced Context Boundaries</h2>
+    </div>
+    <div class="pt-6 px-4 pb-7 sm:pt-8 sm:px-6 md:px-8 lg:px-11 lg:pb-9">
+      <div class="mb-12 last:mb-0" id="s5">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <h3 class="font-display text-[16px] sm:text-[18px] font-bold text-ink leading-snug">Strategy 5: UI Component Isolation</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">When translating UI/UX designs into Tailwind CSS layouts, avoid feeding the entire page architecture to the agent. Providing a massive Next.js layout file just to adjust a navigation card&apos;s flex properties is a severe token waste. Isolate the specific component into a temporary sandbox file, perfect the styling with a fast, low-reasoning model, and then import it back into your main tree once finished.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 my-6">
+          <div class="rounded-[14px] border border-theme-border bg-surface-2 py-4 px-4 sm:py-5 sm:px-[22px]">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.1em] rounded-full py-[3px] px-2.5 mb-3 bg-accent-light text-accent">Best For</span>
+            <ul class="flex flex-col gap-2 list-none">
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['•'] before:text-accent before:text-[18px] before:leading-[1.1] before:shrink-0">Fine-tuning spacing, alignment, and card density</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['•'] before:text-accent before:text-[18px] before:leading-[1.1] before:shrink-0">Fast visual iteration without dragging in unrelated page state</li>
+              <li class="text-[13px] text-ink-soft flex gap-2 items-start before:content-['•'] before:text-accent before:text-[18px] before:leading-[1.1] before:shrink-0">One-off component polish for landing pages and docs</li>
+            </ul>
+          </div>
+          <div class="rounded-[14px] border border-theme-border bg-accent-light py-4 px-4 sm:py-5 sm:px-[22px]">
+            <span class="inline-block text-[10px] font-bold uppercase tracking-[0.1em] rounded-full py-[3px] px-2.5 mb-3 bg-surface text-accent">Why It Works</span>
+            <p class="text-[13.5px] text-ink-soft leading-[1.7] m-0">A focused component file keeps the model’s attention on one visual problem at a time. That reduces prompt bloat, lowers reasoning overhead, and makes the final import far easier to review.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-px bg-[linear-gradient(90deg,transparent,var(--border),transparent)] my-9"></div>
+
+      <div class="mb-12 last:mb-0" id="s6">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <h3 class="font-display text-[16px] sm:text-[18px] font-bold text-ink leading-snug">Strategy 6: The &quot;Micro-Bite&quot; Refactoring Rule</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">Never ask an agent to refactor an entire full-stack flow in a single prompt. Break the task into discrete, isolated steps: update your database schema first, then the backend controller, and finally the frontend components. Save your files between each step and start a fresh chat to prevent server-side logic from contaminating the client-side context window.</p>
+
+        <div class="flex flex-col gap-4 my-6">
+          <div class="flex flex-col gap-3 sm:flex-row sm:gap-5 items-start bg-surface-2 border border-theme-border rounded-[14px] py-4 px-4 sm:py-5 sm:px-6">
+            <div class="w-9 h-9 rounded-[10px] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white font-display font-extrabold text-[16px] flex items-center justify-center shrink-0">1</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1.5">Schema first</strong>
+              <p class="text-[13.5px] text-ink-soft m-0">Adjust the data contract before touching the application surface so the downstream layers have a stable target.</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row sm:gap-5 items-start bg-surface-2 border border-theme-border rounded-[14px] py-4 px-4 sm:py-5 sm:px-6">
+            <div class="w-9 h-9 rounded-[10px] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white font-display font-extrabold text-[16px] flex items-center justify-center shrink-0">2</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1.5">Controller next</strong>
+              <p class="text-[13.5px] text-ink-soft m-0">Wire the business logic after the contract is settled, keeping the backend changes isolated from UI concerns.</p>
+            </div>
+          </div>
+          <div class="flex flex-col gap-3 sm:flex-row sm:gap-5 items-start bg-surface-2 border border-theme-border rounded-[14px] py-4 px-4 sm:py-5 sm:px-6">
+            <div class="w-9 h-9 rounded-[10px] bg-[linear-gradient(135deg,var(--accent),var(--accent-2))] text-white font-display font-extrabold text-[16px] flex items-center justify-center shrink-0">3</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1.5">UI last</strong>
+              <p class="text-[13.5px] text-ink-soft m-0">Only then refactor the view layer, now that the API and data path are already verified.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- MODULE 4 -->
+  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-soft" id="module4">
+    <div class="relative overflow-hidden pt-7 px-4 pb-6 border-b border-theme-border sm:pt-9 sm:px-6 md:px-8 lg:px-11 lg:pb-8 before:content-[''] before:absolute before:-top-5 before:-right-5 before:w-[180px] before:h-[180px] before:rounded-full before:opacity-[0.06] before:bg-[#d97706]">
+      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-amber">Module 04</p>
+      <h2 class="font-display text-[clamp(22px,4vw,30px)] font-extrabold tracking-tight text-ink leading-[1.15]">Diagnostics &amp; Troubleshooting</h2>
+    </div>
+    <div class="pt-6 px-4 pb-7 sm:pt-8 sm:px-6 md:px-8 lg:px-11 lg:pb-9">
+      <div class="mb-12 last:mb-0">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <h3 class="font-display text-[16px] sm:text-[18px] font-bold text-ink leading-snug">Recognizing the &quot;Hallucination Threshold&quot;</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">As a chat session runs longer, watch for the warning signs of context decay. If the agent starts inventing dependencies, forgetting strict formatting rules, or hallucinating old file paths, you have hit the threshold. Do not argue with the model to correct its memory. Save your current working state and initiate a clean Context Handshake in a new thread.</p>
+        <div class="rounded-[14px] py-5 px-6 my-5 flex gap-3.5 bg-amber-light">
+          <div>
+            <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-amber">Signal to Watch</strong>
+            <p class="m-0 text-[14px] leading-[1.65] text-amber">The model starts sounding confident while producing details that do not match the current repository state. That is a clear sign to reset the context instead of forcing another correction loop.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h-px bg-[linear-gradient(90deg,transparent,var(--border),transparent)] my-9"></div>
+
+      <div class="mb-12 last:mb-0">
+        <div class="flex items-start gap-4 mb-[18px]">
+          <h3 class="font-display text-[16px] sm:text-[18px] font-bold text-ink leading-snug">Source Control Over Chat Reverts</h3>
+        </div>
+        <p class="text-ink-soft mb-3.5 leading-[1.75]">If the model generates a massive, broken codebase update, do not spend tokens typing out a prompt asking it to &quot;undo&quot; its own work. Explaining the rollback consumes just as many tokens as the mistake itself. Rely on your native source control. Run a local revert or discard the changes directly, then edit your original prompt to try a different approach from a clean slate.</p>
+        <div class="rounded-[14px] py-5 px-6 my-5 flex gap-3.5 bg-green-light">
+          <div>
+            <strong class="block text-[13px] font-bold uppercase tracking-[0.06em] mb-1 text-green">Practical Rule</strong>
+            <p class="m-0 text-[14px] leading-[1.65] text-green">Use Git to reset the branch, restore the last known-good state, and then reissue a tighter prompt with a narrower scope. A clean state beats a long corrective conversation every time.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- MODULE 5 -->
+  <article class="bg-surface border border-theme-border rounded-[20px] overflow-hidden mb-10 shadow-[0_4px_24px_var(--shadow)]" id="module5">
     <div class="relative overflow-hidden pt-7 px-4 pb-6 border-b border-theme-border sm:pt-9 sm:px-6 md:px-8 lg:px-11 lg:pb-8 before:content-[''] before:absolute before:-top-5 before:-right-5 before:w-[180px] before:h-[180px] before:rounded-full before:opacity-[0.06] before:bg-[#059669]">
-      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-green">Module 03</p>
+      <p class="text-[11px] font-bold tracking-[0.12em] uppercase mb-2.5 text-green">Module 05</p>
       <h2 class="font-display text-[clamp(22px,4vw,30px)] font-extrabold tracking-tight text-ink leading-[1.15]">Team Checklist &amp; Operational Habits</h2>
     </div>
     <div class="pt-6 px-4 pb-7 sm:pt-8 sm:px-6 md:px-8 lg:px-11 lg:pb-9">
@@ -280,6 +383,38 @@
               <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Stop typing descriptive file paths in plain English. Use native <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">@</code> file tags so the IDE feeds exact file slices deterministically. Embrace the prompt edit workflow over long conversation loops.</p>
             </div>
           </div>
+          
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">Isolate Error Traces</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">When your app crashes, do not copy and paste the entire 200-line terminal output into the chat. Standard build logs (like verbose Webpack or Vite output) eat up massive token counts. Extract and paste strictly the specific stack trace where the Next.js or Node.js error actually occurred.</p>
+            </div>
+          </div>
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">Scrub Console Output</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Before feeding terminal data or network payloads to the agent for debugging, strip out repetitive warnings, successful API status codes, and empty objects. Only provide the explicit failing payload and the expected schema.</p>
+            </div>
+          </div>
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">Targeted Code Reviews</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">When asking the agent to review a recent branch or pull request for bugs, never ask it to "review the backend." Point it specifically to the exact modified files (e.g., using <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">@userController.ts</code> and <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">@authMiddleware.ts</code> ) so it doesn't waste tokens reading untouched MERN stack configurations.</p>
+            </div>
+          </div>
+
+          <div class="check-item flex gap-4 items-start py-[18px] px-[22px] rounded-[14px] border border-theme-border bg-surface transition-shadow duration-200 hover:shadow-[0_4px_20px_rgba(79,70,229,0.08)]">
+            <div class="w-7 h-7 rounded-lg border-2 border-theme-border flex items-center justify-center shrink-0 text-transparent text-[13px] cursor-pointer transition-all duration-200 select-none hover:border-accent hover:bg-accent-light hover:text-accent" onclick="toggleCheck(this)">✓</div>
+            <div>
+              <strong class="block text-[14px] font-bold text-ink mb-1">The "Console.log" Sanity Check</strong>
+              <p class="text-[13.5px] text-ink-soft m-0 leading-[1.6]">Before opening a high-reasoning chat to ask an AI why a component state isn't updating, add a standard <code class="font-mono text-[12px] text-white bg-[#343637] px-1.5 rounded">console.log</code> to check the data flow manually. Letting an LLM burn 15,000 tokens to tell you a variable is undefined is an expensive substitute for a basic 10-second manual check.</p>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -292,7 +427,6 @@
 <!-- FOOTER (Fixed dark-mode behavior by changing bg-ink to an explicit dark color hex) -->
 <footer class="bg-[#0f1117] text-white/50 text-center py-8 px-4 text-[13px] sm:py-10 sm:px-6">
   <p><strong class="text-white/80">The Token-Conscious Developer</strong> &nbsp;·&nbsp; A Handbook for AI Agent Optimization</p>
-  <p class="mt-1">Apply these strategies to reduce costs, eliminate drift, and stay in flow.</p>
   <p class="mt-1">Made by <strong>Hassan Mirza</strong>.</p>
 </footer>
 <!-- External Configuration & Behaviors -->
