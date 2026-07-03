@@ -17,9 +17,9 @@
   --red-light:  #fee2e2;
   --border:     #e2e5f0;
   --shadow:     rgba(15, 17, 23, 0.08);
-  --cover-start:#0f1117;
-  --cover-mid:  #1e1b4b;
-  --cover-end:  #312e81;
+  --cover-start:#000000;
+  --cover-mid:  #283048;
+  --cover-end:  #859398;
   --mono:       'IBM Plex Mono', monospace;
   --sans:       'Manrope', system-ui, sans-serif;
   --display:    'Plus Jakarta Sans', sans-serif;
@@ -43,7 +43,7 @@
   --red-light:  rgba(248, 113, 113, 0.16);
   --border:     rgba(255, 255, 255, 0.09); /* Premium, translucent borders across elements in dark mode */
   --shadow:     rgba(0, 0, 0, 0.45);
-  --cover-start:#060816;
-  --cover-mid:  #111c3b;
-  --cover-end:  #1f2b4e;
+  --cover-start:#000000;
+  --cover-mid:  #141E30;
+  --cover-end:  #243B55;
 }
