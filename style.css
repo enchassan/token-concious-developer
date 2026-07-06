@@ -1,4 +1,3 @@
-/* CSS variables retained for dynamic theme switching */
 :root {
   --ink:        #0f1117;
   --ink-soft:   #3a3f52;
@@ -17,8 +16,8 @@
   --red-light:  #fee2e2;
   --border:     #e2e5f0;
   --shadow:     rgba(15, 17, 23, 0.08);
-  --cover-start:#000000;
-  --cover-mid:  #283048;
+  --cover-start:#2a3457;
+  --cover-mid:  #495373;
   --cover-end:  #859398;
   --mono:       'IBM Plex Mono', monospace;
   --sans:       'Manrope', system-ui, sans-serif;
@@ -41,9 +40,13 @@
   --amber-light: rgba(251, 191, 36, 0.16);
   --red:        #f87171;
   --red-light:  rgba(248, 113, 113, 0.16);
-  --border:     rgba(255, 255, 255, 0.09); /* Premium, translucent borders across elements in dark mode */
+  --border:     rgba(255, 255, 255, 0.09);
   --shadow:     rgba(0, 0, 0, 0.45);
   --cover-start:#000000;
   --cover-mid:  #141E30;
   --cover-end:  #243B55;
+}
+
+html {
+  scroll-behavior: smooth;
 }
