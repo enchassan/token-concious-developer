@@ -49,3 +49,8 @@ html {
   --cover-mid:  #141E30;
   --cover-end:  #243B55;
 }
+
+p {
+  text-align: justify;
+  hyphens: auto;
+}
