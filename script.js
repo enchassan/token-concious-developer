@@ -39,3 +39,21 @@ const root = document.documentElement;
       el.closest('.check-item').style.opacity = '0.6';
     }
   }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const tokenSpan = document.querySelector(".animate-pulse");
+    if (!tokenSpan) return;
+    
+    let currentTokens = 12480;
+    const targetTokens = 184512;
+    const increment = 4300;
+    
+    const counterLoop = setInterval(() => {
+        currentTokens += increment;
+        if (currentTokens >= targetTokens) {
+            currentTokens = targetTokens;
+            clearInterval(counterLoop);
+        }
+        tokenSpan.textContent = currentTokens.toLocaleString();
+    }, 25);
+});
