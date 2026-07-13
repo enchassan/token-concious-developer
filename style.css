@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 :root {
   --ink:        #0f1117;
   --ink-soft:   #3a3f52;
@@ -45,8 +48,4 @@
   --cover-start:#000000;
   --cover-mid:  #141E30;
   --cover-end:  #243B55;
-}
-
-html {
-  scroll-behavior: smooth;
 }

@@ -3,7 +3,7 @@ const root = document.documentElement;
 
   function updateThemeToggleLabel(theme) {
     if (!themeToggle) return;
-    themeToggle.innerHTML = theme === 'dark' ? '☀️ Light mode' : '🌙 Dark mode';
+    themeToggle.innerHTML = theme === 'dark' ? 'Light mode' : 'Dark mode';
   }
 
   function applyTheme(theme) {
